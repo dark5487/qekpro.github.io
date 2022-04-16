@@ -1,0 +1,142 @@
+
+      
+            <!DOCTYPE html>
+
+            <html lang="en">
+            
+            <head>
+                <title>連結試算表 - 表單Form</title>
+                <meta charset="utf-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1">
+            
+                <!-- 連結Bootstrap -->
+                <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-U1DAWAznBHeqEIlVSCgzq+c9gqGAJn5c/t99JyeKa9xxaYpSvHU5awsuZVVFIhvj" crossorigin="anonymous">
+                </script>
+                <!-- CSS 格式修改 -->
+                <style>
+                    .container-contact {
+                        padding: 20px;
+                        text-align: center;
+                        color: white;
+                        background-color: rgb(42, 165, 159);
+                        width: 100%;
+                    }
+                    
+                    .container-contact h3 {
+                        font-size: 40px;
+                        text-align: center;
+                        padding: 10px;
+                    }
+                    
+                    .btn {
+                        width: 100%;
+                        font-size: 30px;
+                        margin: 20px 0px 20px 0px;
+                        background-color: rgb(6, 117, 119);
+                        color: rgb(255, 255, 255);
+                        border-radius: 20px;
+                        transition: 1s;
+                    }
+                    
+                    .btn:hover {
+                        background-color: rgb(178, 224, 84);
+                        color: black;
+                    }
+                    
+                    input {
+                        margin-top: 20px;
+                    }
+                </style>
+            </head>
+            
+            <body>
+                <div class="container-contact">
+                    <h3>填寫資料加入會員 煩請全部詳細填寫</h3>
+                     <h3>好康1:加入會員後3天內會送100元購物金(三個月內使用完畢)
+                     <h3>好康2:不限消費品項,皆回饋1%購物金(六個月內使用完畢)
+                     <h3>好康3:當月壽星贈送100元購物金(當月月初發送)
+                    </h3>
+            
+                    <div class="row">
+                        <!-- 第一欄位 -->
+                        <div class="col-sm-2">
+            
+                        </div>
+                        <!-- 第二欄位 -->
+                        <div class="col-sm-8">
+                            <form id="myForm">
+                                <div class="row">
+                                    <!-- 第一個輸入 - 名字 -->
+                                    <div class="col-sm-6 form-group">
+                                        <input class="form-control" id="name" name="name" placeholder="全名 必填 ex:王曉明" type="text" required>
+                                    </div>
+                                    <!-- 第二個輸入 - 手機號碼 -->
+                                    <div class="col-sm-6 form-group">
+                                        <input class="form-control" id="phone" name="phone" placeholder="手機號碼 必填 ex:0912345789" type="text" required>
+                                    </div>
+                                    <!-- 第三個輸入 -  生日 -->
+                                    <div class="col-sm-12 form-group">
+                                        <input class="form-control" id="borthday" name="borthday" placeholder="西元年/月/日 必填 ex:1999/01/02" type="text" required>
+                                </div>
+                                    <!-- 第四個輸入 - 居住縣市 -->
+                                    <div class="col-sm-6 form-group">
+                                        <input class="form-control" id="live" name="live" placeholder="居住縣市 必填 ex:台南市" type="text" required>
+                                    </div>
+                                    <!-- 第五個輸入 -  居住地區 -->
+                                    <div class="col-sm-6 form-group">
+                                        <input class="form-control" id="area" name="area" placeholder="居住地區 必填 ex:北區" type="text" required>
+                                     </div>
+                                     <div class="col-sm-12 form-group">
+                                        <button class="btn " type="submit" id="submitButton">送出資料</button>
+                                    </div>
+                                </div>
+                             </form>
+                          </div>
+                                <h3>本公司保有最終修改,變更,活動解釋權及取消本活動之權利</h3>
+                                <h3>若有相關異動將會公告於網站,恕不另行通知。</h3>
+                           
+                        </div>
+                        <!-- 第三欄位 -->
+                        <div class="col-sm-2">
+            
+                        </div>
+                    </div>
+                </div>
+            
+                <!-- JavaScript程式 -->
+                <script>
+                    // 抓輸入的值
+            
+                    function getValues() {
+            
+                        var name = document.getElementById("name");
+                        var phone = document.getElementById("phone");
+                        var borthday = document.getElementById("borthday");
+                        var live = document.getElementById("live");
+                        var area = document.getElementById("area");
+            
+                        var rowData = {
+                            name: name.value,
+                            phone: phone.value,
+                            borthday: borthday.value,
+                            live: live.value,
+                            area: area.value
+                        };
+            
+                        // 上傳資料
+                        google.script.run.addData(rowData);
+                        // 清除表單上的資料
+                        document.getElementById("myForm").reset();
+                        // 完成後的訊息
+                        alert("感謝填寫，謝謝！日後報您的手機號碼就是會員了!");
+                    }
+            
+                    document.getElementById("submitButton").addEventListener("click", getValues);
+                </script>
+            </body>
+            
+            </html>
+            
+            
+                  
